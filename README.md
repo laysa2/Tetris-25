@@ -2,7 +2,7 @@
 
 Este projeto contém a implementação do jogo **Tetris de Resistência**, desenvolvido inteiramente em linguagem **Assembly** para a arquitetura do Processador ICMC. O projeto foi realizado como parte da avaliação da disciplina de **Organização e Arquitetura de Computadores**.
 
-## 👥 Integrantes do Grupo
+## 🧑‍💻 Integrantes do Grupo
 * Giovana
 * Laysa Almeida Oliveira
 * Luiz
@@ -13,7 +13,7 @@ Este projeto contém a implementação do jogo **Tetris de Resistência**, desen
 > *Neste vídeo, explicamos qual é a ideia por trás do jogo.
 ---
 
-## 🕹️ Sobre o Jogo
+## 🧱 Sobre o Jogo
 O projeto é uma variação do clássico Tetris, focada na mecânica de **Resistência** (estilo *Stacker*). Diferente do jogo original, o objetivo aqui não é limpar linhas, mas sim testar a habilidade do jogador em organizar e espalhar as peças lateralmente para evitar que a pilha atinja o teto o mais rápido possível.
 
 ### Funcionalidades Implementadas:
@@ -24,7 +24,7 @@ O projeto é uma variação do clássico Tetris, focada na mecânica de **Resist
 * **Sistema de Reinício:** Permite reiniciar o jogo pressionando `ENTER` sem a necessidade de resetar o simulador, limpando dinamicamente a memória do mapa.
 ---
 
-## 🛠️ Detalhes Técnicos e Lógica de Implementação
+## ⚙️ Detalhes Técnicos e Lógica de Implementação
 Para implementar este jogo no Processador ICMC, utilizamos estratégias de manipulação de memória e lógica de baixo nível:
 
 ### 1. Mapeamento de Memória (VRAM Virtual)
@@ -49,7 +49,7 @@ Como o processador não possui um relógio de tempo real (RTC) acessível via in
 * Para permitir o reinício do jogo, implementamos uma função dedicada (`Limpar_Memoria_Mapa`) que percorre todos os endereços de memória referentes ao mapa. Ela reescreve o caractere `'0'` (vazio) nas áreas jogáveis das linhas 1 a 29, removendo os "restos" das peças da partida anterior, agindo como um *garbage collector* manual.
 ---
 
-## 🎮 Controles
+## ⌨️ Controles
 
 | Tecla | Ação |
 | :---: | :--- |
@@ -58,7 +58,7 @@ Como o processador não possui um relógio de tempo real (RTC) acessível via in
 | **ENTER** | Iniciar Jogo / Reiniciar após Game Over |
 ---
 
-## 🚀 Como Rodar o Projeto
+## ▶️ Como Rodar o Projeto
 
 ### Pré-requisitos
 * **Simulador do Processador ICMC**.
