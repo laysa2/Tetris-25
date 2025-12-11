@@ -46,7 +46,7 @@ Como o processador não possui um relógio de tempo real (RTC) acessível via in
 * **Fórmula:** `Semente = (Semente * 5) + 7`. Isso garante peças variadas (T, I, O, L) a cada partida de forma imprevisível.
 
 ### 4. Limpeza Dinâmica de Memória (Memset)
-Para permitir o reinício do jogo, implementamos uma função dedicada (`Limpar_Memoria_Mapa`) que percorre todos os endereços de memória referentes ao mapa. Ela reescreve o caractere `'0'` (vazio) nas áreas jogáveis das linhas 1 a 29, removendo os "restos" das peças da partida anterior, agindo como um *garbage collector* manual.
+* Para permitir o reinício do jogo, implementamos uma função dedicada (`Limpar_Memoria_Mapa`) que percorre todos os endereços de memória referentes ao mapa. Ela reescreve o caractere `'0'` (vazio) nas áreas jogáveis das linhas 1 a 29, removendo os "restos" das peças da partida anterior, agindo como um *garbage collector* manual.
 ---
 
 ## 🎮 Controles
