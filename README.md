@@ -1,6 +1,7 @@
 # 🎮 Tetris de Resistência - Processador ICMC
 
 Este projeto contém a implementação do jogo **Tetris de Resistência**, desenvolvido inteiramente em linguagem **Assembly** para a arquitetura do Processador ICMC. O projeto foi realizado como parte da avaliação da disciplina de **Organização e Arquitetura de Computadores**.
+<img width="800" height="134" alt="image" src="https://github.com/user-attachments/assets/6ae50cad-91b1-4ed4-8c29-db1f2acd3db1" />
 
 ## 🧑‍💻 Integrantes do Grupo
 * Giovana Rafaela Marmo de Almeida 
