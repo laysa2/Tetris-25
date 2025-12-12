@@ -26,9 +26,9 @@ O projeto é uma variação do clássico Tetris, focada na mecânica de **Resist
 ---
 
 ## ⚙️ Detalhes Técnicos
-* **Mapeamento de Memória:** O cenário é gerenciado por strings na memória (`Linha_01` a `Linha_30`), funcionando como um buffer de vídeo onde '9' são paredes e '0' espaços vazios. O jogo não "enxerga" pixels. A cada quadro, o processador lê esse mapa e decide qual cor pintar na tela.
-* **Renderização de Largura Dupla:** Como os caracteres do terminal são finos e altos, uma peça normal ficaria "esmagada". Para corrigir isso, usamos uma lógica de multiplicação: o jogo calcula a posição em uma grade de 10 colunas, mas desenha na tela multiplicando a posição por 2. Assim, cada bloco ocupa dois espaços (`[]`), formando um quadrado perfeito.
-* **RNG (Aleatoriedade):** Sem um relógio real (RTC), implementamos um *Gerador Linear Congruente*. Um contador de alta frequência captura o momento exato do input do usuário para gerar a semente aleatória (`Seed`). O processador ICMC não possui um relógio interno para sortear números. Nossa solução foi usar a "imprevisibilidade humana": enquanto a tela de título aguarda, um contador roda em velocidade máxima. O milissegundo exato em que você aperta `ENTER` captura esse número e o usa numa fórmula matemática (`x5 + 7`) para definir a ordem das próximas peças.
+* **Mapeamento de Memória:** O cenário não usa pixels diretos, mas sim um mapa de texto na memória RAM (Linha_01 a 30). O processador lê '9' (parede) e '0' (vazio) e converte isso em cores na tela, separando totalmente a lógica matemática do desenho visual.
+* **Renderização de Largura:** Para evitar que as peças fiquem "esmagadas" (já que letras são finas), a lógica roda em uma grade de 10 colunas, mas o desenho multiplica a posição por 2 (X visual = X lógico * 2). Isso cria blocos quadrados perfeitos ([]).
+* **RNG (Aleatoriedade):** Como o processador não tem relógio (RTC), usamos a interação humana como fonte de caos. Um contador roda em loop na tela inicial; o milissegundo exato que você aperta ENTER define a Seed (semente), que passa pela fórmula (Seed * 5) + 7 para gerar peças imprevisíveis.
 * **Limpeza de Memória (Hot Restart):** Criamos uma rotina estilo *memset* que varre os endereços de memória do mapa e reseta os bytes jogáveis para '0', permitindo reiniciar o jogo sem recarregar o simulador.
 ---
 
