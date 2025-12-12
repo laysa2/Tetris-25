@@ -26,27 +26,12 @@ O projeto é uma variação do clássico Tetris, focada na mecânica de **Resist
 
 ## ⚙️ Detalhes Técnicos e Lógica de Implementação
 Para implementar este jogo no Processador ICMC, utilizamos estratégias de manipulação de memória e lógica de baixo nível:
+## ⚙️ Detalhes Técnicos
 
-### 1. Mapeamento de Memória (VRAM Virtual)
-O cenário do jogo é gerenciado através de **Strings na Memória RAM**, funcionando como uma memória de vídeo virtual.
-* O mapa é composto por strings (`Linha_01` a `Linha_30`), onde cada linha possui 40 caracteres.
-* Usamos o caractere `'9'` para representar as paredes laterais indestrutíveis e `'0'` para o espaço vazio.
-* A renderização varre essas strings e atualiza o vídeo apenas com as cores correspondentes, separando a lógica (números) da visualização (pixels).
-
-### 2. Renderização de Largura Dupla
-Para garantir que as peças tivessem uma proporção visual agradável (quadrada) na tela do terminal, adotamos uma conversão de coordenadas:
-* **Lógica:** O jogo calcula a posição em uma grade lógica de 10 colunas.
-* **Visual:** Na hora de desenhar, multiplicamos a coordenada X por 2 e desenhamos dois caracteres lado a lado.
-* **Fórmula:** `Posicao_Video = Offset_Margem + (Posicao_Logica * 2)`
-
-### 3. Geração de Aleatoriedade (RNG)
-Como o processador não possui um relógio de tempo real (RTC) acessível via instrução direta, criamos um **Gerador Linear Congruente** baseado na interação humana:
-* Durante a tela de título ("Pressione Enter"), um contador (`r1`) é incrementado continuamente em *loop*.
-* O valor exato do contador no momento em que o usuário pressiona a tecla se torna a `Seed` (Semente).
-* **Fórmula:** `Semente = (Semente * 5) + 7`. Isso garante peças variadas (T, I, O, L) a cada partida de forma imprevisível.
-
-### 4. Limpeza Dinâmica de Memória (Memset)
-* Para permitir o reinício do jogo, implementamos uma função dedicada (`Limpar_Memoria_Mapa`) que percorre todos os endereços de memória referentes ao mapa. Ela reescreve o caractere `'0'` (vazio) nas áreas jogáveis das linhas 1 a 29, removendo os "restos" das peças da partida anterior, agindo como um *garbage collector* manual.
+* **Mapeamento de Memória:** O cenário é gerenciado por strings na memória (`Linha_01` a `Linha_30`), funcionando como um buffer de vídeo onde '9' são paredes e '0' espaços vazios. O jogo não "enxerga" pixels. A cada quadro, o processador lê esse mapa e decide qual cor pintar na tela.
+* **Renderização de Largura Dupla:** Como os caracteres do terminal são finos e altos, uma peça normal ficaria "esmagada". Para corrigir isso, usamos uma lógica de multiplicação: o jogo calcula a posição em uma grade de 10 colunas, mas desenha na tela multiplicando a posição por 2. Assim, cada bloco ocupa dois espaços (`[]`), formando um quadrado perfeito.
+* **RNG (Aleatoriedade):** Sem um relógio real (RTC), implementamos um *Gerador Linear Congruente*. Um contador de alta frequência captura o momento exato do input do usuário para gerar a semente aleatória (`Seed`). O processador ICMC não possui um relógio interno para sortear números. Nossa solução foi usar a "imprevisibilidade humana": enquanto a tela de título aguarda, um contador roda em velocidade máxima. O milissegundo exato em que você aperta `ENTER` captura esse número e o usa numa fórmula matemática (`x5 + 7`) para definir a ordem das próximas peças.
+* **Limpeza de Memória (Hot Restart):** Criamos uma rotina estilo *memset* que varre os endereços de memória do mapa e reseta os bytes jogáveis para '0', permitindo reiniciar o jogo sem recarregar o simulador.
 ---
 
 ## ⌨️ Controles
