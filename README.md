@@ -43,7 +43,7 @@ O projeto é uma variação do clássico Tetris, focada na mecânica de **Resist
 
 ## ▶️ Como Rodar o Jogo
 1. Abra o Sublime Text (sublime_text.exe)
-2. Carregue o arquivo tetris25.asm
+2. Carregue o arquivo tetris25.asm, não esqueça do "charmap.mif" para a compilação
 3. Execute o programa pressionando F7, depois SHIFT + HOME
 4. Na tela inicial, pressione ENTER para começar o jogo
 ---
