@@ -8,7 +8,7 @@ Este projeto contém a implementação do jogo **Tetris de Resistência**, desen
 * Luiz Eduardo Reis Tavares Silva
 
 ## 📹 Vídeo Explicativo
-> **[INSIRA O LINK DO YOUTUBE OU GOOGLE DRIVE AQUI]**
+> **https://drive.google.com/file/d/1a2XffLL_Avvys_fL9JNvQsd_9lw-hFhM/view?usp=drive_link**
 >
 > *Neste vídeo, explicamos qual é a ideia por trás do jogo.
 ---
