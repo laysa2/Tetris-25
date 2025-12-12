@@ -10,7 +10,7 @@ Este projeto contém a implementação do jogo **Tetris de Resistência**, desen
 ## 📹 Vídeo Explicativo
 > **https://drive.google.com/file/d/1a2XffLL_Avvys_fL9JNvQsd_9lw-hFhM/view?usp=drive_link**
 >
-> *Neste vídeo, explicamos qual é a ideia por trás do jogo.
+> Neste vídeo, explicamos qual é a ideia por trás do jogo.
 ---
 
 ## 🧱 Sobre o Jogo
@@ -24,10 +24,7 @@ O projeto é uma variação do clássico Tetris, focada na mecânica de **Resist
 * **Sistema de Reinício:** Permite reiniciar o jogo pressionando `ENTER` sem a necessidade de resetar o simulador, limpando dinamicamente a memória do mapa.
 ---
 
-## ⚙️ Detalhes Técnicos e Lógica de Implementação
-Para implementar este jogo no Processador ICMC, utilizamos estratégias de manipulação de memória e lógica de baixo nível:
 ## ⚙️ Detalhes Técnicos
-
 * **Mapeamento de Memória:** O cenário é gerenciado por strings na memória (`Linha_01` a `Linha_30`), funcionando como um buffer de vídeo onde '9' são paredes e '0' espaços vazios. O jogo não "enxerga" pixels. A cada quadro, o processador lê esse mapa e decide qual cor pintar na tela.
 * **Renderização de Largura Dupla:** Como os caracteres do terminal são finos e altos, uma peça normal ficaria "esmagada". Para corrigir isso, usamos uma lógica de multiplicação: o jogo calcula a posição em uma grade de 10 colunas, mas desenha na tela multiplicando a posição por 2. Assim, cada bloco ocupa dois espaços (`[]`), formando um quadrado perfeito.
 * **RNG (Aleatoriedade):** Sem um relógio real (RTC), implementamos um *Gerador Linear Congruente*. Um contador de alta frequência captura o momento exato do input do usuário para gerar a semente aleatória (`Seed`). O processador ICMC não possui um relógio interno para sortear números. Nossa solução foi usar a "imprevisibilidade humana": enquanto a tela de título aguarda, um contador roda em velocidade máxima. O milissegundo exato em que você aperta `ENTER` captura esse número e o usa numa fórmula matemática (`x5 + 7`) para definir a ordem das próximas peças.
@@ -44,7 +41,6 @@ Para implementar este jogo no Processador ICMC, utilizamos estratégias de manip
 ---
 
 ## ▶️ Como Rodar o Projeto
-
 ### Pré-requisitos
 * **Simulador do Processador ICMC**.
 * **Montador (Assembler)** para converter o código `.asm` em binário `.mif`.
