@@ -41,16 +41,9 @@ O projeto é uma variação do clássico Tetris, focada na mecânica de **Resist
 | **ENTER** | Iniciar Jogo / Reiniciar após Game Over |
 ---
 
-## ▶️ Como Rodar o Projeto
-### Pré-requisitos
-* **Simulador do Processador ICMC**.
-* **Montador (Assembler)** para converter o código `.asm` em binário `.mif`.
-
-### Passo a Passo
-1.  Clone este repositório ou baixe os arquivos.
-2.  Abra o arquivo `Tetris.asm` (ou o nome do arquivo principal) no Montador.
-3.  Gere o arquivo `.mif` (Memory Initialization File).
-    * *Nota: O arquivo .mif contém as instruções de máquina e os dados hexadecimais.*
-4.  Carregue o arquivo `.mif` no Simulador do Processador ICMC.
-5.  Execute a simulação.
+## ▶️ Como Rodar o Jogo
+1. Abra o Sublime Text (sublime_text.exe)
+2. Carregue o arquivo tetris25.asm
+3. Execute o programa pressionando F7, depois SHIFT + HOME
+4. Na tela inicial, pressione ENTER para começar o jogo
 ---
